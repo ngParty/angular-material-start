@@ -1,0 +1,14 @@
+<md-subheader>
+  Contact <span class="name">{{ $ctrl.contact.name }}</span>:
+</md-subheader>
+
+<md-list>
+  <md-item ng-repeat="item in $ctrl.items">
+    <md-button ng-click="$ctrl.performAction(item)">
+      <md-icon md-svg-icon="{{ item.icon_url }}"></md-icon>
+      {{item.name}}
+    </md-button>
+  </md-item>
+</md-list>
+
+

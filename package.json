@@ -1,0 +1,24 @@
+{
+  "name": "material-start",
+  "private": true,
+  "version": "0.0.0",
+  "description": "A starter project for AngularJS Material",
+  "repository": "https://github.com/angular/material-start",
+  "license": "MIT",
+  "devDependencies": {
+    "tsd": "0.6.5"
+  },
+  "scripts": {
+    "postinstall": "tsd reinstall -so",
+    "prestart": "npm update"
+  },
+  "dependencies": {
+    "angular": "1.4.8",
+    "angular-animate": "1.4.8",
+    "angular-aria": "1.4.8",
+    "angular-material": "1.0.2",
+    "angular-messages": "1.4.8",
+    "angular-route": "1.4.8",
+    "angular-sanitize": "1.4.8"
+  }
+}

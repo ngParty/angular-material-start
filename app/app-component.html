@@ -1,0 +1,35 @@
+<md-toolbar layout="row">
+  <md-button class="menu" hide-gt-sm ng-click="$ctrl.toggleUsersList()" aria-label="Show User List">
+    <md-icon md-svg-icon="menu"></md-icon>
+  </md-button>
+  <h1>Angular Material - Starter App</h1>
+</md-toolbar>
+
+<div flex layout="row">
+
+  <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2" md-component-id="left">
+    <md-list>
+      <md-item ng-repeat="it in $ctrl.users">
+        <md-button ng-click="$ctrl.selectUser(it)" ng-class="{'selected' : it === $ctrl.selected }">
+          <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
+          {{it.name}}
+        </md-button>
+      </md-item>
+    </md-list>
+  </md-sidenav>
+
+  <md-content flex id="content">
+    <md-icon md-svg-icon="{{$ctrl.selected.avatar}}" class="avatar"></md-icon>
+    <h2>{{$ctrl.selected.name}}</h2>
+    <p>{{$ctrl.selected.content}}</p>
+
+    <md-button class="share" md-no-ink ng-click="$ctrl.share($event)" aria-label="Share">
+      <md-icon md-svg-icon="share"></md-icon>
+    </md-button>
+
+    <md-button class="share-modal" ng-click="$ctrl.shareWithModal($event)" aria-label="Share With modal">
+      Share with modal
+    </md-button>
+  </md-content>
+
+</div>
