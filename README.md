@@ -1,10 +1,11 @@
 # AngularJS Material-Start 
 
-This Material **start*** project is a *seed* for AngularJS Materal applications. The project contains a sample AngularJS application and is preconfigured to install the Angular framework and a bunch of development and testing tools for instant web development gratification.
+This Material **start*** project is a *seed* for AngularJS Material applications with Typescript.
+The project contains a sample AngularJS application and is pre-configured to install the Angular framework and a bunch of development and testing tools for instant web development gratification.
 
-This sample application is skeleton for a typical [AngularJS Material](http://angularjs.org/) web app: comprised of a Side navigation area and a content area. You can use it to quickly bootstrap your angular webapp projects and dev environment for these
-projects.
-<br/>
+This sample application is skeleton for a typical [AngularJS Material](http://angularjs.org/) web app: comprised of a Side navigation area and a content area.
+You can use it to quickly bootstrap your angular webapp projects and dev environment for these projects.
+<br>
 
 ![Material Starter](https://cloud.githubusercontent.com/assets/210413/6428195/7a0c5386-bf5e-11e4-9989-ab68843b6852.png)
 
@@ -29,14 +30,14 @@ its package manager (npm) installed.  You can get them from [http://nodejs.org/]
 Clone the angular-seed repository using [git][git]:
 
 ```
-git clone https://github.com/angular/material-start.git
+git clone https://github.com/ngParty/material-start.git
 cd material-start
 ```
 
 If you just want to start a new project without the material-start commit history then you can do:
 
 ```bash
-git clone --depth=1 https://github.com/angular/material-start.git <your-project-name>
+git clone --depth=1 https://github.com/ngParty/material-start.git <your-project-name>
 ```
 
 The `depth=1` tells git to only pull down one commit worth of historical data.
@@ -46,36 +47,35 @@ The `depth=1` tells git to only pull down one commit worth of historical data.
 We have two kinds of dependencies in this project: tools and angular framework code.  The tools help
 us manage and test the application.
 
-* We get the tools we depend upon via `npm`, the [node package manager][npm].
-* We get the angular code via `bower`, a [client-side code package manager][bower].
+* We get the tools and angular code we depend upon via `npm`, the [node package manager][npm].
 
-We have preconfigured `npm` to automatically run `bower` so we can simply do:
+simply do:
 
 ```
 npm install
 ```
 
-Behind the scenes this will also call `bower install`.  You should find that you have two new
-folders in your project.
+Behind the scenes this will also call `tsd install` so you get all type definitions.
 
-* `node_modules` - contains the npm packages for the tools we need
-* `app/bower_components` - contains the angular framework files
-
-*Note that the `bower_components` folder would normally be installed in the root folder but
-angular-seed changes this location through the `.bowerrc` file.  Putting it in the app folder makes
-it easier to serve the files by a webserver.*
+* `node_modules` - contains the npm packages for the tools and libraries we need
+* `typings` - contains angular + angular material type definitions
 
 ## Directory Layout
 
 ```
 app/                    --> all of the source files for the application
-  app.css               --> default stylesheet
-  src/           --> all app specific modules
-     avatars/              --> package for avatar features
-      avatarService.js           --> angular service used to simulate remote dataservices for avatars.
-  app.js                --> main application module
+  /assets
+    app.css             --> default stylesheet
+    /svg                --> svg icons
+  /common               --> common logic for whole app services,constansts etc..
+  /components           --> reusable components
+  main.ts               --> main application file which boots angular app
+  app.ts                --> root module
+  app-config.ts         --> root module config
+  app-component.ts      --> root component
   index.html            --> app layout file (the main html template file of the app)
 karma.conf.js         --> config file for running unit tests with Karma
+typings/            --> downloaded type definitions
 e2e-tests/            --> end-to-end tests
   protractor-conf.js    --> Protractor config file
   scenarios.js          --> end-to-end scenarios to be run by Protractor
@@ -87,21 +87,13 @@ Previously we recommended that you merge in changes to angular-seed into your ow
 Now that the angular framework library code and tools are acquired through package managers (npm and
 bower) you can use these tools instead to update the dependencies.
 
-You can update the tool dependencies by running:
+You can update the tool and angular dependencies by running:
 
 ```
 npm update
 ```
 
 This will find the latest versions that match the version ranges specified in the `package.json` file.
-
-You can update the Angular dependencies by running:
-
-```
-bower update
-```
-
-This will find the latest versions that match the version ranges specified in the `bower.json` file.
 
 
 ## Serving the Application Files
@@ -114,23 +106,11 @@ etc to function properly when an html page is opened via `file://` scheme instea
 
 ### Running the App during Development
 
-The angular-seed project comes preconfigured with a local development webserver.  It is a node.js
-tool called [http-server][http-server].  You can install http-server globally:
+just simple:
 
 ```
-sudo npm install -g http-server
+npm start
 ```
-
-Then you can start your own development web server to serve static files from a folder by running:
-
-```
-cd app
-http-server -a localhost -p 8000
-```
-
-Alternatively, you can choose to configure your own webserver, such as apache or nginx. Just
-configure your server to serve the files under the `app/` directory.
-
 
 ### Running the App in Production
 
@@ -152,11 +132,9 @@ For more information on AngularJS please check out http://angularjs.org/
 For more information on Angular Material, check out https://material.angularjs.org/
 
 [git]: http://git-scm.com/
-[bower]: http://bower.io
 [npm]: https://www.npmjs.org/
 [node]: http://nodejs.org
 [protractor]: https://github.com/angular/protractor
 [jasmine]: http://jasmine.github.io
 [karma]: http://karma-runner.github.io
 [travis]: https://travis-ci.org/
-[http-server]: https://github.com/nodeapps/http-server
