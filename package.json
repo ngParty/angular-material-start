@@ -6,11 +6,14 @@
   "repository": "https://github.com/angular/material-start",
   "license": "MIT",
   "devDependencies": {
-    "tsd": "0.6.5"
+    "live-server": "0.9.1",
+    "tsd": "0.6.5",
+    "typescript": "1.7.5"
   },
   "scripts": {
     "postinstall": "tsd reinstall -so",
-    "prestart": "npm update"
+    "prestart": "npm update",
+    "start": "tsc -w & cd app && live-server --no-browser --mount='/node_modules':'../node_modules' --mount='/built':'../built' --mount='/app':'../app'"
   },
   "dependencies": {
     "angular": "1.4.8",

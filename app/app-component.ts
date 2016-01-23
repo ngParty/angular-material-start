@@ -20,7 +20,6 @@
       private userService,
       private $mdSidenav: ng.material.ISidenavService,
       private $mdBottomSheet: ng.material.IBottomSheetService,
-      private $mdDialog: ng.material.IDialogService,
       private $log: ng.ILogService,
       private $scope: ng.IScope
     ) {}
@@ -57,68 +56,21 @@
 
     }
 
-    //shareWithModal($event){
-    //
-    //  const user = this.selected;
-    //  const parentEl = angular.element(document.body);
-    //
-    //  this.$mdDialog.show({
-    //    parent: parentEl,
-    //    targetEvent: $event,
-    //    template:
-    //    `<md-dialog aria-label="List dialog">
-    //      <md-dialog-content>
-    //        <!--{{ contact | json }}-->
-    //        <share-contact contact="contact"></share-contact>
-    //      </md-dialog-content>
-    //      <md-dialog-actions>
-    //        <md-button ng-click="closeDialog()" class="md-primary">
-    //          Close Dialog
-    //        </md-button>
-    //      </md-dialog-actions>
-    //    </md-dialog>`,
-    //    locals: {
-    //      contact: user
-    //    },
-    //    controller: DialogController
-    //  });
-    //  function DialogController($scope, $mdDialog, contact) {
-    //    $scope.contact = contact;
-    //    $scope.closeDialog = function() {
-    //      $mdDialog.hide();
-    //    }
-    //  }
-    //}
-
     /**
      * Show the bottom sheet
      */
     share( $event ) {
 
-      const user = this.selected;
-
       const bottomSheetConfig = {
         parent: angular.element( document.getElementById( 'content' ) ),
-        locals: { contact: this.selected },
-        controller: function (contact) {
-          this.contact = this.locals.contact;
-        },
-        controllerAs: '$ctrl',
-        bindToController: true,
         template: `
         <md-bottom-sheet class="md-list md-has-header">
-          <share-contact contact="$ctrl.contact"></share-contact>
+          <share-contact contact="$ctrl.selected"></share-contact>
         </md-bottom-sheet>
         `,
+        scope: this.$scope.$new(),
         targetEvent: $event
       };
-      /**
-       * Bottom Sheet controller for the Avatar Actions
-       */
-      UserSheetController.$inject = [ 'contact' ];
-      function UserSheetController( contact ) {
-        this.user = contact;
-      }
 
       this.$mdBottomSheet
         .show( bottomSheetConfig )
